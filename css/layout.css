@@ -1,0 +1,1532 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+#####################################################################
+
+	目次【INDEX】
+	
+#####################################################################
+
+■グリッド【flexbox,row】
+
+　＿フレックスボックス【.flexbox】
+
+　＿フレックスアイテム
+
+　＿フレックスカラム【.flex-col1～12】
+
+　＿ブレイクポイントフレックスカラム【.flex-xs～flex-lg】
+
+　＿均等カラム【.fit .row-col】
+
+　＿分割カラム【.row-col1～12】
+
+　＿ブレイクポイント分割カラム【.col-xs～col-lg】
+
+　＿固定カラム【.row-box】
+
+　＿ボックスカラム【.col-box】
+
+
+■サムネール【thumbnail】
+
+　＿サムネール【thumbnail】
+
+　＿メイスンリーカラム【.masonry】
+
+　＿キャプション【.t_caption,v_caption】
+
+　＿文字隠し【.t_hidden-full】
+
+　＿文字隠しハーフ【.t_hidden-half】
+
+　＿文字表示【.t_visible-full】
+
+　＿シャドウ【t_shadow】
+
+　＿ボーダー【t_border】
+
+　＿フィット【t_fit】
+
+　＿ガター【.t_gutter】
+
+
+■リスト【Lists】
+
+　＿テン有り【list】
+
+　＿テン無し【list-unstyled】
+
+　＿見出し有【listHorizontal】
+
+
+■テーブル
+
+　＿テーブル共通
+
+　＿テーブルスタイル1【.table】
+
+　＿テーブルスタイル2【.table2】
+
+　＿フレックステーブル【.flex-table】
+
+　＿テーブルスマホ対応【.t_sp】
+
+　＿ボーダー無し【t_no-border】
+
+　＿セルのサイズ【t_size】
+
+　＿セルの色【t_color】
+
+
+
+
+/*
+#####################################################################
+
+	グリッド【flexbox,row】
+	
+#####################################################################
+*/
+
+/* ****************************************************
+  フレックスボックス【.flexbox】
+***************************************************** */
+
+.flexbox > div,.flexbox > li{ word-break: break-word; position:relative;}
+
+.flexbox{ display: -webkit-box; /*Android4.3*/ display:-moz-box; display:-moz-flexbox; display: -ms-flexbox; /*IE10*/ display: -webkit-flex; /*PC-Safari,iOS8.4*/ display:-moz-flex; display: flex; min-height:0%;}
+
+/*アイテムの折り返し設定をする*/
+.flexWrap{ -ms-flex-wrap:wrap; -webkit-flex-wrap:wrap; flex-wrap:wrap;}
+.flexWrap-reverse{ -ms-flex-wrap:wrap-reverse; -webkit-flex-wrap:wrap-reverse; flex-wrap:wrap-reverse; }
+
+/********** ボックスの方向 ********/
+
+
+/*縦方向*/
+.direction-column{ -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;}
+
+@media screen and (max-width : 767px){
+	
+	.direction-column-tb{ -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;}
+}
+
+@media screen and (max-width : 479px){
+	.direction-column-sp{ -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;}
+}
+
+/*配置順の反転*/
+.row-reverse{ -webkit-flex-direction:row-reverse; -ms-flex-direction:row-reverse; flex-direction:row-reverse;}
+.column-reverse{ -webkit-flex-direction:column-reverse; -ms-flex-direction:column-reverse; flex-direction:column-reverse;}
+
+@media screen and (max-width : 767px){
+	.row-reverse-tb{ -webkit-flex-direction:row-reverse; -ms-flex-direction:row-reverse; flex-direction:row-reverse;}
+	.column-reverse-tb{ -webkit-flex-direction:column-reverse; -ms-flex-direction:column-reverse; flex-direction:column-reverse;}
+}
+
+@media screen and (max-width : 479px){
+	.row-reverse-sp{ -webkit-flex-direction:row-reverse; -ms-flex-direction:row-reverse; flex-direction:row-reverse;}
+	.column-reverse-sp{ -webkit-flex-direction:column-reverse; -ms-flex-direction:column-reverse; flex-direction:column-reverse;}
+}
+
+
+/********** アイテムの配置の変更【.flexContent】 ********/
+
+.flexContent-start {-webkit-box-pack: flex-start; -webkit-justify-content: flex-start; -ms-flex-pack: flex-start; justify-content: flex-start; }
+.flexContent-end {-webkit-box-pack: end; -webkit-justify-content:flex-end; -ms-flex-pack: end; justify-content:flex-end; }
+.flexContent-center {-webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack:center; justify-content: center; }
+.flexContent-spaceBetween {-webkit-box-pack: space-between; -webkit-justify-content: space-between; -ms-flex-pack:space-between; justify-content: space-between; }
+.flexContent-spaceAround {-webkit-box-pack: space-around; -webkit-justify-content: space-around; -ms-flex-pack:space-around; justify-content: space-around; }
+
+
+/********** アイテムのクロス軸方向の配置【.flexAlign】 ********/
+
+.flexAlign-stretch { -webkit-align: stretch; -webkit-align-items: stretch; -ms-flex-align:stretch; align-items: stretch; }
+.flexAlign-start { -webkit-align: flex-start; -webkit-align-items: flex-start; -ms-flex-align:flex-start; align-items: flex-start; }
+.flexAlign-end { -webkit-align: flex-end; -webkit-align-items: flex-end; -ms-flex-align:end; align-items: flex-end; }
+.flexAlign-center { -webkit-align: center; -webkit-align-items: center; -ms-flex-align:center; align-items: center; }
+
+/* ****************************************************
+  フレックスアイテム
+***************************************************** */
+
+/********** アイテム個別順の変更【.flexbox .order】 ********/
+
+.itemOrder-1{ -ms-flex-order:1; -webkit-order: 1;order:1;}.itemOrder-2{ -ms-flex-order:2; -webkit-order: 2;order:2;}.itemOrder-3{ -ms-flex-order:3; -webkit-order: 3;order:3;}.itemOrder-4{ -ms-flex-order:4; -webkit-order: 4;order:4;}
+.itemOrder-5{ -ms-flex-order:5; -webkit-order: 5;order:5;}.itemOrder-6{ -ms-flex-order:6; -webkit-order: 6;order:6;}.itemOrder-7{ -ms-flex-order:7; -webkit-order: 7;order:7;}.itemOrder-8{ -ms-flex-order:8; -webkit-order: 8;order:8;}
+.itemOrder-9{ -ms-flex-order:9; -webkit-order: 9;order:9;}.itemOrder-10{ -ms-flex-order:10; -webkit-order: 10;order:10;}
+
+
+/********** アイテム個別幅の変更【.flexbox .flexGrow】 ********/
+
+.flexGrow-1 { -webkit-box-flex-grow: 1.0; -ms-flex-grow: 1; -webkit-flex-grow: 1; flex-grow: 1; } .flexGrow-2 { -webkit-box-flex-grow: 2.0; -ms-flex-grow: 2; -webkit-flex-grow: 2; flex-grow: 2; }
+.flexGrow-3 { -webkit-box-flex-grow: 3.0; -ms-flex-grow: 3; -webkit-flex-grow: 3; flex-grow: 3; } .flexGrow-4 { -webkit-box-flex-grow: 4.0; -ms-flex-grow: 4; -webkit-flex-grow: 4; flex-grow: 4; }
+.flexGrow-5 { -webkit-box-flex-grow: 5.0; -ms-flex-grow: 5; -webkit-flex-grow: 5; flex-grow: 5; } .flexGrow-6 { -webkit-box-flex-grow: 6.0; -ms-flex-grow: 6; -webkit-flex-grow: 6; flex-grow: 6; }
+
+/********** アイテム個別クロス軸方向の配置【.itemAlign】 ********/
+
+.itemAlign-stretch { -webkit-align-self: stretch; align-self: stretch; }
+.itemAlign-start { -webkit-align-self: flex-start; align-self: flex-start; }
+.itemAlign-end { -webkit-align-self: flex-end; align-self: flex-end; }
+.itemAlign-center { -webkit-align-self: center; align-self: center; }
+
+/* ****************************************************
+  フレックスカラム【.flex-col1～12】
+***************************************************** */
+
+.flex-col12{-webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%;}/*12カラム分幅*/
+.flex-col11{-webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%;}/*11カラム分幅*/
+.flex-col10{-webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%;}/*10カラム分幅*/
+.flex-col9{-webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%;}/*9カラム分幅*/
+.flex-col8{-webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%;}/*8カラム分幅*/
+.flex-col7{-webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%;}/*7カラム分幅*/
+.flex-col6{-webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%;}/*6カラム分幅*/
+.flex-col5{-webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%;}/*5カラム分幅*/
+.flex-col4{-webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%;}/*4カラム分幅*/
+.flex-col3{-webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%;}/*3カラム分幅*/
+.flex-col2_5{-webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%;}/*2.5カラム分幅*/
+.flex-col2{-webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%;}/*2カラム分幅*/
+.flex-col1{-webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%;}/*1カラム分幅*/
+
+
+/* ****************************************************
+  ブレイクポイントフレックスカラム【.flex-xs～flex-lg】
+***************************************************** */
+
+
+.flex-md-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+.flex-md-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+.flex-md-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+.flex-md-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+.flex-md-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+.flex-md-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+.flex-md-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+.flex-md-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+.flex-md-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+.flex-md-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+.flex-md-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+.flex-md-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+.flex-md-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+
+@media screen and (min-width : 1200px){
+	.flex-lg-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-lg-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-lg-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-lg-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-lg-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-lg-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-lg-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-lg-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-lg-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-lg-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-lg-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-lg-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-lg-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+
+}
+
+@media screen and (max-width : 1000px){
+	
+	.flex-lg-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-lg-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-lg-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-lg-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-lg-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-lg-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-lg-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-lg-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-lg-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-lg-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-lg-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-lg-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-lg-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-md-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-md-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-md-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-md-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-md-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-md-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-md-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-md-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-md-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-md-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-md-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-md-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-md-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+}
+
+
+@media screen and (max-width : 767px){
+	
+	.flex-lg-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-lg-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-lg-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-lg-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-lg-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-lg-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-lg-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-lg-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-lg-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-lg-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-lg-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-lg-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-lg-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-md-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-md-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-md-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-md-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-md-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-md-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-md-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-md-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-md-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-md-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-md-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-md-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-md-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-sm-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-sm-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-sm-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-sm-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-sm-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-sm-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-sm-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-sm-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-sm-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-sm-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-sm-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-sm-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-sm-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+}
+
+
+@media screen and (max-width : 479px){
+	
+	.flex-lg-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-lg-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-lg-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-lg-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-lg-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-lg-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-lg-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-lg-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-lg-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-lg-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-lg-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-lg-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-lg-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-md-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-md-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-md-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-md-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-md-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-md-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-md-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-md-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-md-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-md-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-md-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-md-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-md-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-sm-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-sm-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-sm-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-sm-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-sm-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-sm-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-sm-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-sm-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-sm-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-sm-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-sm-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-sm-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-sm-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+	
+	.flex-xs-12{ -webkit-box-flex-basis: 100%; -ms-flex-basis: 100%; -webkit-flex-basis: 100%; flex-basis: 100%; }/*12カラム分幅*/
+	.flex-xs-11{ -webkit-box-flex-basis: 91.66666667%; -ms-flex-basis: 91.66666667%; -webkit-flex-basis: 91.66666667%; flex-basis: 91.66666667%; }/*11カラム分幅*/
+	.flex-xs-10{ -webkit-box-flex-basis: 83.33333333%; -ms-flex-basis: 83.33333333%; -webkit-flex-basis: 83.33333333%; flex-basis: 83.33333333%; }/*10カラム分幅*/
+	.flex-xs-9{ -webkit-box-flex-basis: 75%; -ms-flex-basis: 75%; -webkit-flex-basis: 75%; flex-basis: 75%; }/*9カラム分幅*/
+	.flex-xs-8{ -webkit-box-flex-basis: 66.66666667%; -ms-flex-basis: 66.66666667%; -webkit-flex-basis: 66.66666667%; flex-basis: 66.66666667%; }/*8カラム分幅*/
+	.flex-xs-7{ -webkit-box-flex-basis: 58.33333333%; -ms-flex-basis: 58.33333333%; -webkit-flex-basis: 58.33333333%; flex-basis: 58.33333333%; }/*7カラム分幅*/
+	.flex-xs-6{ -webkit-box-flex-basis: 50%; -ms-flex-basis: 50%; -webkit-flex-basis: 50%; flex-basis: 50%; }/*6カラム分幅*/
+	.flex-xs-5{ -webkit-box-flex-basis: 41.6667%; -ms-flex-basis: 41.6667%; -webkit-flex-basis: 41.6667%; flex-basis: 41.6667%; }/*5カラム分幅*/
+	.flex-xs-4{ -webkit-box-flex-basis: 33.33333333%; -ms-flex-basis: 33.33333333%; -webkit-flex-basis: 33.33333333%; flex-basis: 33.33333333%; }/*4カラム分幅*/
+	.flex-xs-3{ -webkit-box-flex-basis: 25%; -ms-flex-basis: 25%; -webkit-flex-basis: 25%; flex-basis: 25%; }/*3カラム分幅*/
+	.flex-xs-2_5{ -webkit-box-flex-basis: 20%; -ms-flex-basis: 20%; -webkit-flex-basis: 20%; flex-basis: 20%; }/*2.5カラム分幅*/
+	.flex-xs-2{ -webkit-box-flex-basis: 16.66666667%; -ms-flex-basis: 16.66666667%; -webkit-flex-basis: 16.66666667%; flex-basis: 16.66666667%; }/*2カラム分幅*/
+	.flex-xs-1{ -webkit-box-flex-basis: 8.33333333%; -ms-flex-basis: 8.33333333%; -webkit-flex-basis: 8.33333333%; flex-basis: 8.33333333%; }/*1カラム分幅*/
+}
+
+
+/* ****************************************************
+  均等カラム【.fit .row-col】
+***************************************************** */
+
+/*float解除指定*/.row:after { display: block; clear: both; height: 0; visibility: hidden; content: "."; font-size: 0; line-height: 0;}
+/*float解除指定*/.row{ clear: both; min-height: 1px; }
+
+.row {
+	box-sizing: border-box;
+	
+	display: -webkit-box;/* Android4.3以前ブラウザ用 */
+	display: -webkit-flex;/* iOS8以前Safari用 */
+	display: flex;
+	
+	-webkit-flex-wrap: wrap; /* Safari */
+	flex-wrap: wrap;
+}
+
+
+/*float解除指定*/.row.fit:after { content:none; }
+
+.row.fit { 
+    display: table;
+    table-layout: fixed;
+	width: 100%;
+
+}
+
+.row-col{ 
+	display: table-cell;
+    vertical-align: top;
+	box-sizing: border-box;
+	table-layout: fixed;
+	
+	/*アニメ高速化指定*/
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+@media screen and (max-width : 479px){
+	.row-col{
+		float:none; 
+		display: block;
+		width: auto;
+	}
+}
+
+/* ****************************************************
+  分割カラム【row-col1～6】
+***************************************************** */
+
+.row-col12,.row-col11,.row-col10,.row-col9,.row-col8,.row-col7,.row-col6,.row-col5,.row-col4,.row-col3,.row-col2_5,.row-col2,.row-col1{
+	position:relative;
+	
+	/*アニメ高速化指定*/
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+	
+	word-break: break-all;
+	display: table-cell;
+    vertical-align: top;
+	float:left;
+}
+
+.row-col12{ width: 100%; }/*12カラム分幅*/
+.row-col11{ width: 91.66666667%; }/*11カラム分幅*/
+.row-col10{ width: 83.33333333%; }/*10カラム分幅*/
+.row-col9{ width: 75%; }/*9カラム分幅*/
+.row-col8{ width: 66.66666667%; }/*8カラム分幅*/
+.row-col7{ width: 58.33333333%; }/*7カラム分幅*/
+.row-col6{ width: 50%; }/*6カラム分幅*/
+.row-col5{ width: 41.6667%; }/*5カラム分幅*/
+.row-col4{ width: 33.33333333%; }/*4カラム分幅*/
+.row-col3{ width: 25%; }/*3カラム分幅*/
+.row-col2_5{ width: 20%; }/*2.5カラム分幅*/
+.row-col2{ width: 16.66666667%; }/*2カラム分幅*/
+.row-col1{ width: 8.33333333%; }/*1カラム分幅*/
+
+@media screen and (max-width : 479px){
+	.row-col12,.row-col11,.row-col10,.row-col9,.row-col8,.row-col7,.row-col6,.row-col5,.row-col4,.row-col3,.row-col2_5,.row-col2,.row-col1{
+		float:none; 
+		display: block;
+		width: 100%;
+	}
+	
+}
+
+
+/* ****************************************************
+  ブレイクポイント分割カラム【.col-xs～col-lg】
+***************************************************** */
+
+.col-xs-12,.col-xs-11,.col-xs-10,.col-xs-9,.col-xs-8,.col-xs-7,.col-xs-6,.col-xs-5,.col-xs-4,.col-xs-3,.col-xs-2_5,.col-xs-2,.col-xs-1,
+.col-sm-12,.col-sm-11,.col-sm-10,.col-sm-9,.col-sm-8,.col-sm-7,.col-sm-6,.col-sm-5,.col-sm-4,.col-sm-3,.col-sm-2_5,.col-sm-2,.col-sm-1,
+.col-md-12,.col-md-11,.col-md-10,.col-md-9,.col-md-8,.col-md-7,.col-md-6,.col-md-5,.col-md-4,.col-md-3,.col-md-2_5,.col-md-2,.col-md-1,
+.col-lg-12,.col-lg-11,.col-lg-10,.col-lg-9,.col-lg-8,.col-lg-7,.col-lg-6,.col-lg-5,.col-lg-4,.col-lg-3,.col-lg-2_5,.col-lg-2,.col-lg-1{
+	position:relative;
+	
+	/*アニメ高速化指定*/
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+	
+	/*word-break: break-all;*/
+	display: table-cell;
+    vertical-align: top;
+	float:left;
+}
+
+/*均等カラムと混合してる場合調整*/
+.row-col.col-xs-12,.row-col.col-xs-11,.row-col.col-xs-10,.row-col.col-xs-9,.row-col.col-xs-8,.row-col.col-xs-7,.row-col.col-xs-6,.row-col.col-xs-5,.row-col.col-xs-4,.row-col.col-xs-3,.col-xs-2_5,.row-col.col-xs-2,.row-col.col-xs-1,
+.row-col.col-sm-12,.row-col.col-sm-11,.row-col.col-sm-10,.row-col.col-sm-9,.row-col.col-sm-8,.row-col.col-sm-7,.row-col.col-sm-6,.row-col.col-sm-5,.row-col.col-sm-4,.row-col.col-sm-3,.col-sm-2_5,.row-col.col-sm-2,.row-col.col-sm-1{
+	float:inherit;
+}
+
+.col-md-12{ width: 100%; }/*12カラム分幅*/
+.col-md-11{ width: 91.66666667%; }/*11カラム分幅*/
+.col-md-10{ width: 83.33333333%; }/*10カラム分幅*/
+.col-md-9{ width: 75%; }/*9カラム分幅*/
+.col-md-8{ width: 66.66666667%; }/*8カラム分幅*/
+.col-md-7{ width: 58.33333333%; }/*7カラム分幅*/
+.col-md-6{ width: 50%; }/*6カラム分幅*/
+.col-md-5{ width: 41.6667%; }/*5カラム分幅*/
+.col-md-4{ width: 33.33333333%; }/*4カラム分幅*/
+.col-md-3{ width: 25%; }/*3カラム分幅*/
+.col-md-2_5{ width: 20%; }/*2.5カラム分幅*/
+.col-md-2{ width: 16.66666667%; }/*2カラム分幅*/
+.col-md-1{ width: 8.33333333%; }/*1カラム分幅*/
+
+@media screen and (min-width : 1200px){
+	.col-lg-12{ width: 100%; }/*12カラム分幅*/
+	.col-lg-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-lg-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-lg-9{ width: 75%; }/*9カラム分幅*/
+	.col-lg-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-lg-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-lg-6{ width: 50%; }/*6カラム分幅*/
+	.col-lg-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-lg-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-lg-3{ width: 25%; }/*3カラム分幅*/
+	.col-lg-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-lg-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-lg-1{ width: 8.33333333%; }/*1カラム分幅*/
+
+}
+
+@media screen and (max-width : 1000px){
+	
+	.col-lg-12{ width: 100%; }/*12カラム分幅*/
+	.col-lg-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-lg-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-lg-9{ width: 75%; }/*9カラム分幅*/
+	.col-lg-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-lg-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-lg-6{ width: 50%; }/*6カラム分幅*/
+	.col-lg-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-lg-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-lg-3{ width: 25%; }/*3カラム分幅*/
+	.col-lg-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-lg-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-lg-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-md-12{ width: 100%; }/*12カラム分幅*/
+	.col-md-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-md-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-md-9{ width: 75%; }/*9カラム分幅*/
+	.col-md-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-md-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-md-6{ width: 50%; }/*6カラム分幅*/
+	.col-md-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-md-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-md-3{ width: 25%; }/*3カラム分幅*/
+	.col-md-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-md-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-md-1{ width: 8.33333333%; }/*1カラム分幅*/
+}
+
+
+@media screen and (max-width : 767px){
+	
+	/*均等カラムと混合してる場合調整*/
+	.row-col.col-xs-12,.row-col.col-xs-11,.row-col.col-xs-10,.row-col.col-xs-9,.row-col.col-xs-8,.row-col.col-xs-7,.row-col.col-xs-6,.row-col.col-xs-5,.row-col.col-xs-4,.row-col.col-xs-3,.col-xs-2_5,.row-col.col-xs-2,.row-col.col-xs-1,
+	.row-col.col-sm-12,.row-col.col-sm-11,.row-col.col-sm-10,.row-col.col-sm-9,.row-col.col-sm-8,.row-col.col-sm-7,.row-col.col-sm-6,.row-col.col-sm-5,.row-col.col-sm-4,.row-col.col-sm-3,.col-sm-2_5,.row-col.col-sm-2,.row-col.col-sm-1{
+		float: left;
+	}
+	
+	.col-lg-12{ width: 100%; }/*12カラム分幅*/
+	.col-lg-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-lg-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-lg-9{ width: 75%; }/*9カラム分幅*/
+	.col-lg-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-lg-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-lg-6{ width: 50%; }/*6カラム分幅*/
+	.col-lg-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-lg-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-lg-3{ width: 25%; }/*3カラム分幅*/
+	.col-lg-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-lg-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-lg-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-md-12{ width: 100%; }/*12カラム分幅*/
+	.col-md-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-md-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-md-9{ width: 75%; }/*9カラム分幅*/
+	.col-md-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-md-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-md-6{ width: 50%; }/*6カラム分幅*/
+	.col-md-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-md-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-md-3{ width: 25%; }/*3カラム分幅*/
+	.col-md-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-md-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-md-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-sm-12{ width: 100%; }/*12カラム分幅*/
+	.col-sm-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-sm-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-sm-9{ width: 75%; }/*9カラム分幅*/
+	.col-sm-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-sm-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-sm-6{ width: 50%; }/*6カラム分幅*/
+	.col-sm-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-sm-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-sm-3{ width: 25%; }/*3カラム分幅*/
+	.col-sm-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-sm-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-sm-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+}
+
+
+@media screen and (max-width : 479px){
+	
+	.col-xs-12,.col-xs-11,.col-xs-10,.col-xs-9,.col-xs-8,.col-xs-7,.col-xs-6,.col-xs-5,.col-xs-4,.col-xs-3,.col-xs-2_5,.col-xs-2,.col-xs-1,
+	.col-sm-12,.col-sm-11,.col-sm-10,.col-sm-9,.col-sm-8,.col-sm-7,.col-sm-6,.col-sm-5,.col-sm-4,.col-sm-3,.col-sm-2_5,.col-sm-2,.col-sm-1,
+	.col-md-12,.col-md-11,.col-md-10,.col-md-9,.col-md-8,.col-md-7,.col-md-6,.col-md-5,.col-md-4,.col-md-3,.col-md-2_5,.col-md-2,.col-md-1,
+	.col-lg-12,.col-lg-11,.col-lg-10,.col-lg-9,.col-lg-8,.col-lg-7,.col-lg-6,.col-lg-5,.col-lg-4,.col-lg-3,.col-lg-2_5,.col-lg-2,.col-lg-1{
+		display: table-cell;
+		float:left;
+	}
+	
+	.col-lg-12{ width: 100%; }/*12カラム分幅*/
+	.col-lg-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-lg-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-lg-9{ width: 75%; }/*9カラム分幅*/
+	.col-lg-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-lg-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-lg-6{ width: 50%; }/*6カラム分幅*/
+	.col-lg-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-lg-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-lg-3{ width: 25%; }/*3カラム分幅*/
+	.col-lg-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-lg-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-lg-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-md-12{ width: 100%; }/*12カラム分幅*/
+	.col-md-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-md-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-md-9{ width: 75%; }/*9カラム分幅*/
+	.col-md-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-md-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-md-6{ width: 50%; }/*6カラム分幅*/
+	.col-md-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-md-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-md-3{ width: 25%; }/*3カラム分幅*/
+	.col-md-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-md-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-md-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-sm-12{ width: 100%; }/*12カラム分幅*/
+	.col-sm-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-sm-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-sm-9{ width: 75%; }/*9カラム分幅*/
+	.col-sm-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-sm-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-sm-6{ width: 50%; }/*6カラム分幅*/
+	.col-sm-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-sm-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-sm-3{ width: 25%; }/*3カラム分幅*/
+	.col-sm-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-sm-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-sm-1{ width: 8.33333333%; }/*1カラム分幅*/
+	
+	.col-xs-12{ width: 100%; }/*12カラム分幅*/
+	.col-xs-11{ width: 91.66666667%; }/*11カラム分幅*/
+	.col-xs-10{ width: 83.33333333%; }/*10カラム分幅*/
+	.col-xs-9{ width: 75%; }/*9カラム分幅*/
+	.col-xs-8{ width: 66.66666667%; }/*8カラム分幅*/
+	.col-xs-7{ width: 58.33333333%; }/*7カラム分幅*/
+	.col-xs-6{ width: 50%; }/*6カラム分幅*/
+	.col-xs-5{ width: 41.6667%; }/*5カラム分幅*/
+	.col-xs-4{ width: 33.33333333%; }/*4カラム分幅*/
+	.col-xs-3{ width: 25%; }/*3カラム分幅*/
+	.col-xs-2_5{ width: 20%; }/*2.5カラム分幅*/
+	.col-xs-2{ width: 16.66666667%; }/*2カラム分幅*/
+	.col-xs-1{ width: 8.33333333%; }/*1カラム分幅*/
+}
+
+/* ****************************************************
+  固定カラム【row-box】
+***************************************************** */
+.row-box{
+	float: left;
+	vertical-align: top;
+	box-sizing: border-box;
+	
+	/*アニメ高速化指定*/
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+/*詳細指定*/
+.row-box{ margin:0 10px 10px 0; }
+
+@media screen and (max-width : 479px){
+	.row-box{ width:100%; margin:0 0 10px 0;}
+}
+
+.row-box:last-child{ margin-right:0 !important;}
+
+
+
+/* ****************************************************
+  ボックスカラム【col-box】
+***************************************************** */
+
+.col-box-xs{ width:100px; }
+.col-box-s { width:200px; }
+.col-box-m { width:300px; }
+.col-box-l { width:400px; }
+.col-box-xl{ width:500px; }
+
+@media screen and (max-width : 767px){
+	.col-box-xs{ width:60px; }
+	.col-box-s { width:100px; }
+	.col-box-m { width:150px; }
+	.col-box-l { width:200px; }
+	.col-box-xl{ width:250px; }
+}
+
+@media screen and (max-width : 479px){
+	.col-box-xs{ width:100%; }
+	.col-box-s { width:100%; }
+	.col-box-m { width:100%; }
+	.col-box-l { width:100%; }
+	.col-box-xl{ width:100%; }
+}
+
+/*
+#####################################################################
+
+	リスト【Lists】
+	
+#####################################################################
+*/
+
+/* ****************************************************
+  テン有り【list】
+***************************************************** */
+ul.list, ol.list{ padding: 0rem 0rem 0rem 1rem;}
+ul.list li, ol.list li{ list-style: disc;}
+
+ul.list ul, ul.list ol, ol.list ul, ol.list ol {
+    margin-bottom: 0;
+    padding: 0rem 0rem 0rem 1rem;
+}
+ul.list ul li, ul.list ol li, ol.list ul li, ol.list ol li{ list-style: circle;}
+
+/* ****************************************************
+  テン無し【list-unstyled】
+***************************************************** */
+ul.list.list-unstyled, ol.list.list-unstyled {
+    list-style: outside none none;
+    padding: 0rem;
+}
+
+ul.list.list-unstyled li, ol.list.list-unstyled li {
+	list-style:none;
+	margin-bottom:6px;
+}
+ul.list.list-unstyled li:last-child, ol.list.list-unstyled li:last-child{ margin-bottom:0;}
+
+ul.list.list-unstyled ul li, ul.list.list-unstyled ol li, ol.list.list-unstyled ul li, ol.list ol li{ list-style:outside circle; margin-left:1rem;}
+
+
+/* ****************************************************
+  見出し有【listHorizontal】
+***************************************************** */
+dl.listHorizontal::before {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+dl.listHorizontal::after {
+    clear: both;
+    content: "";
+    display: table;
+    line-height: 0;
+}
+dl.listHorizontal {
+    padding: 0;
+}
+
+
+dl.listHorizontal dt {
+    clear: left;
+    float: left;
+    font-weight: bold;
+    overflow: hidden;
+    width: 21rem;
+	text-align: left;
+}
+
+dl.listHorizontal dd::after {
+    clear: both;
+    content: "";
+    display: block;
+    line-height: 0;
+}
+dl.listHorizontal dd {
+    margin-left: 22.5rem;
+	margin-bottom:5px;
+}
+
+@media screen and (max-width : 767px){
+	
+	dl.listHorizontal dt {
+		clear: none;
+		float: none;
+		text-align: left;
+		width: auto;
+	}
+
+	dl.listHorizontal dd {
+		margin-left: 1rem;
+	}
+}
+
+
+/*
+#####################################################################
+
+	サムネール【thumbnail】
+	
+#####################################################################
+*/
+
+
+/* ****************************************************
+  サムネール【thumbnail】
+***************************************************** */
+
+.thumbnail{ 
+	width:auto; 
+	margin:0 -10px;/*row-colのパディング分マイナスマージン*/
+}
+.row.fit.thumbnail{ width:auto;}
+
+.thumbnail .row-box{ margin:0; }
+
+.thumbnail .flexbox { height:100%;}
+
+.row.thumbnail > div{
+	display: -webkit-box;/* Android4.3以前ブラウザ用 */
+	display: -webkit-flex;/* iOS8以前Safari用 */
+	display: flex;
+}
+
+.thumbnail.fit > div{ display:table-cell;}
+
+/*サムネール設定*/
+.thumbnail .thum-box{ 
+	padding:10px;
+	/*width:100%*/
+	overflow: hidden;
+}
+
+.thumbnail .thum-box > a{ display:block;}
+
+.thumbnail .thum-box a:hover{
+	filter: alpha(opacity=80);
+	-moz-opacity:0.8;opacity:0.8;
+}
+
+/*画像*/
+.thumbnail img{
+	width:100%!important; height:100%!important;
+
+	-o-object-fit:cover;
+	-moz-object-fit:cover;
+	-ms-object-fit:cover;
+	-webkit-object-fit:cover;
+	object-fit:cover;
+	
+	font-family: 'object-fit: cover;'/*IEとEdge対策*/
+}
+
+@media screen and (max-width : 479px){
+	.thumbnail .thum-box{ padding:5px; }
+}
+
+/* ****************************************************
+ メイスンリーカラム【【.masonry】
+***************************************************** */
+
+.masonry{
+   line-height: 0;
+   -webkit-column-gap:0px;
+   -moz-column-gap:0px;
+   column-gap:0px;
+ 
+}
+
+.masonry img{ width:100%!important; height:auto!important;}
+.masonry .thum-box{overflow: hidden; }
+
+.masonry .thum-box > a{ display:block;}
+.masonry .thum-box a:hover{
+	filter: alpha(opacity=80);
+	-moz-opacity:0.8;opacity:0.8;
+}
+
+/*メイスンリーカラム*/
+
+.masonry.m_col12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+.masonry.m_col11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+.masonry.m_col10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+.masonry.m_col9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+.masonry.m_col8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+.masonry.m_col7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+.masonry.m_col6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+.masonry.m_col5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+.masonry.m_col4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+.masonry.m_col3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+.masonry.m_col2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+
+
+/*ブレイクポイントメイスンリーカラム*/
+
+.masonry.m_col-md-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+.masonry.m_col-md-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+.masonry.m_col-md-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+.masonry.m_col-md-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+.masonry.m_col-md-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+.masonry.m_col-md-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+.masonry.m_col-md-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+.masonry.m_col-md-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+.masonry.m_col-md-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+.masonry.m_col-md-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+.masonry.m_col-md-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+
+@media screen and (min-width : 2300px){
+	.masonry.m_col-lg-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-lg-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-lg-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-lg-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-lg-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-lg-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-lg-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-lg-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-lg-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-lg-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-lg-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+}
+
+@media screen and (max-width : 1000px){
+	.masonry.m_col-lg-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-lg-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-lg-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-lg-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-lg-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-lg-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-lg-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-lg-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-lg-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-lg-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-lg-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+	.masonry.m_col-md-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-md-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-md-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-md-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-md-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-md-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-md-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-md-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-md-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-md-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-md-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+}
+
+@media screen and (max-width : 767px){
+	.masonry.m_col-lg-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-lg-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-lg-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-lg-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-lg-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-lg-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-lg-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-lg-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-lg-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-lg-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-lg-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+	.masonry.m_col-md-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-md-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-md-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-md-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-md-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-md-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-md-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-md-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-md-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-md-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-md-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+	.masonry.m_col-sm-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-sm-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-sm-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-sm-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-sm-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-sm-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-sm-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-sm-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-sm-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-sm-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-sm-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+}
+
+@media screen and (max-width : 479px){
+	.masonry.m_col-lg-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-lg-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-lg-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-lg-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-lg-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-lg-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-lg-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-lg-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-lg-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-lg-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-lg-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+	.masonry.m_col-md-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-md-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-md-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-md-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-md-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-md-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-md-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-md-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-md-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-md-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-md-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+	.masonry.m_col-sm-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-sm-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-sm-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-sm-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-sm-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-sm-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-sm-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-sm-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-sm-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-sm-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-sm-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+	
+
+	.masonry.m_col-xs-12{ column-count:12; -webkit-column-count:12; -moz-column-count:12;}
+	.masonry.m_col-xs-11{ column-count:11; -webkit-column-count:11; -moz-column-count:11;}
+	.masonry.m_col-xs-10{ column-count:10; -webkit-column-count:10; -moz-column-count:10;}
+	.masonry.m_col-xs-9{ column-count:9; -webkit-column-count:9; -moz-column-count:9;}
+	.masonry.m_col-xs-8{ column-count:8; -webkit-column-count:8; -moz-column-count:8;}
+	.masonry.m_col-xs-7{ column-count:7; -webkit-column-count:7; -moz-column-count:7;}
+	.masonry.m_col-xs-6{ column-count:6; -webkit-column-count:6; -moz-column-count:6;}
+	.masonry.m_col-xs-5{ column-count:5; -webkit-column-count:5; -moz-column-count:5;}
+	.masonry.m_col-xs-4{ column-count:4; -webkit-column-count:4; -moz-column-count:4;}
+	.masonry.m_col-xs-3{ column-count:3; -webkit-column-count:3; -moz-column-count:3;}
+	.masonry.m_col-xs-2{ column-count:2; -webkit-column-count:2; -moz-column-count:2;}
+}
+
+
+
+
+
+/* ****************************************************
+  キャプション【.t_caption,v_caption】
+***************************************************** */
+.t_caption,
+.v_caption{
+	width:100%;
+	box-sizing:border-box;
+}
+
+.t_caption,
+.v_caption{/*詳細指定*/
+	margin-top:10px;
+}
+
+/* ****************************************************
+  文字隠し【.t_hidden-full】
+***************************************************** */
+
+.t_hidden-full .thum-box{ 
+	position:relative;
+}
+.t_hidden-full .t_caption{ 
+	position:absolute;
+	top:0;
+	margin:0;
+	height:100%;
+	
+	display: -webkit-box;/* Android4.3以前ブラウザ用 */
+	display: -webkit-flex;/* iOS8以前Safari用 */
+	display: flex;
+	
+	/*詳細設定*/
+	-webkit-align-items: center; /* iOS8以前Safari用 */
+	align-items: center;
+	
+	-webkit-flex-direction: column;/* Safari */
+	flex-direction: column;
+
+	
+	filter: alpha(opacity=0); -moz-opacity:0; opacity:0;
+}
+.t_hidden-full .thum-box a:hover{
+	filter: alpha(opacity=100);
+	-moz-opacity:1.0;opacity:1.0;
+}
+
+/*キャプション詳細設定*/
+.t_hidden-full .t_caption{
+	color:#FFF;
+	padding:20px;
+	
+	-webkit-justify-content: center; /* iOS8以前Safari用 */
+	justify-content: center;
+}
+.t_hidden-full .thum-box:hover .t_caption{
+	filter: alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;	
+}
+
+
+/* ****************************************************
+  文字隠しハーフ【.t_hidden-half】
+***************************************************** */
+
+.t_hidden-half .thum-box{ position:relative; }
+.t_hidden-half .t_caption{ 
+	position:absolute;
+	top:auto;
+	bottom:0;
+	margin:0;
+	
+	filter: alpha(opacity=0); -moz-opacity:0; opacity:0;
+}
+.t_hidden-half .thum-box a:hover{
+	filter: alpha(opacity=100);
+	-moz-opacity:1.0;opacity:1.0;
+}
+
+/*キャプション詳細設定*/
+.t_hidden-half .t_caption{
+	color:#FFF;
+	padding: 0 1rem 0 1rem;
+	height:50px;
+	line-height:50px;
+}
+.t_hidden-half .thum-box:hover .t_caption{
+	filter: alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;	
+}
+
+/* ****************************************************
+  文字表示【.t_visible-full】
+***************************************************** */
+
+.t_visible-full .thum-box{ 
+	position:relative;
+}
+
+.t_visible-full .v_caption{ 
+	position:absolute;
+	top:0;
+	margin:0;
+	height:100%;
+	
+	display: -webkit-box;/* Android4.3以前ブラウザ用 */
+	display: -webkit-flex;/* iOS8以前Safari用 */
+	display: flex;
+	
+	/*詳細設定*/
+	-webkit-align-items: center; /* iOS8以前Safari用 */
+	align-items: center;
+	
+	-webkit-flex-direction: column;/* Safari */
+	flex-direction: column;
+	
+	filter: alpha(opacity=85); -moz-opacity:0.85; opacity:0.85;	
+}
+
+.t_visible-full .thum-box a:hover .v_caption{
+	filter: alpha(opacity=0); -moz-opacity:0; opacity:0;
+	
+}
+
+/*キャプション詳細設定*/
+.t_visible-full .v_caption{
+	color:#FFF;
+	padding:20px;
+	
+	-webkit-justify-content: center; /* iOS8以前Safari用 */
+	justify-content: center;
+
+}
+
+
+/* ****************************************************
+  シャドウ【t_shadow】
+***************************************************** */
+
+.t_shadow .thum-box{ box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2); }
+
+/*詳細設定*/
+.t_shadow .thum-box{
+	overflow:hidden;
+	border-radius: 8px;
+}
+.t_shadow .t_caption{ padding:6px 15px;}
+
+/* ****************************************************
+  ボーダー【t_border】
+***************************************************** */
+
+/*基本設定*/
+.t_border .thum-box{ 
+	border:1px solid #b3b3b3;
+	box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.30);
+}
+
+/*詳細設定*/
+.t_border .thum-box{
+	overflow:hidden;
+	border-radius: 8px;
+}
+.t_border .t_caption{ padding:6px 15px;}
+
+
+/* ****************************************************
+  フィット【t_fit】
+***************************************************** */
+
+.t_fit{
+	margin:auto 0;
+}
+.t_fit .thum-box{
+	padding:0;
+}
+
+/* ****************************************************
+  ガター【.t_gutter】
+***************************************************** */
+
+/*使用中*/
+.thumbnail.t_gutter-s{ margin:auto -15px !important;}
+.thumbnail.t_gutter-s .thum-box{ padding:15px !important;}
+
+/*未使用*/
+
+.thumbnail.t_gutter-m{ margin:auto -20px !important;}
+.thumbnail.t_gutter-m .thum-box{ padding:20px !important;}
+
+.thumbnail.t_gutter-l{ margin:auto -30px !important;}
+.thumbnail.t_gutter-l .thum-box{ padding:30px !important;}
+
+.thumbnail.t_gutter-xl{ margin:auto -40px !important;}
+.thumbnail.t_gutter-xl .thum-box{ padding:40px !important;}
+
+
+/*使用中*/
+
+/*未使用*/
+.masonry.t_gutter-s{ margin:auto -10px !important;}
+.masonry.t_gutter-s .thum-box{ margin:10px !important; margin-bottom:20px !important;/*margin相殺分（倍）*/}
+
+.masonry.t_gutter-m{ margin:auto -20px !important;}
+.masonry.t_gutter-m .thum-box{ margin:20px !important; margin-bottom:40px !important;/*margin相殺分（倍）*/}
+
+.masonry.t_gutter-l{ margin:auto -30px !important;}
+.masonry.t_gutter-l .thum-box{ margin:30px !important; margin-bottom:60px !important;/*margin相殺分（倍）*/}
+
+.masonry.t_gutter-xl{ margin:auto -40px !important;}
+.masonry.t_gutter-xl .thum-box{ margin:40px !important; margin-bottom:80px !important;/*margin相殺分（倍）*/}
+
+
+/*ズレ防止*/
+.masonry.t_gutter-s .thum-box:first-child,
+.masonry.t_gutter-m .thum-box:first-child,
+.masonry.t_gutter-l .thum-box:first-child,
+.masonry.t_gutter-xl .thum-box:first-child{ margin-top:0 !important;}
+
+
+/*
+#####################################################################
+
+	テーブル
+	
+#####################################################################
+
+/* ****************************************************
+  テーブル共通
+***************************************************** */
+
+.table table,
+.table2 table {
+    width: 100%;
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th{
+	font-weight: inherit;
+}
+
+.table th, .table td,
+.table2 th, .table2 .th, .table2 td {
+    padding:0 0 18px 0;
+    vertical-align: top;
+	line-height:1.7;
+}
+
+.table td,
+.table2 td {padding-top:0;}/*見た目に少し下がって見えるのを回避（上記の-2px目安）*/
+
+.table,.table2 {
+    text-align: left;
+}
+
+/*ボーダー*/
+.table th, .table td,
+.table2 th, .table2 td{
+	border: 1px solid #e4e7ec;
+}
+
+/* ****************************************************
+  テーブルスタイル1【.table】
+***************************************************** */
+.table{
+}
+
+/* ****************************************************
+  テーブルスタイル2【.table2】
+***************************************************** */
+
+.table2 table{
+	margin-top:-1px;
+}
+
+
+/* ****************************************************
+  フレックステーブル【.flex-table】
+***************************************************** */
+
+
+.flex-table{
+	border: 1px solid #e4e7ec;
+	border-right: none;
+	border-top:none;
+}
+
+.flex-table .table-box{
+	display:-ms-flexbox;
+	display:-webkit-box;
+	display: -webkit-box;/* Android4.3以前ブラウザ用 */
+	display: -webkit-flex;/* iOS8以前Safari用 */
+	display: flex;
+	
+	-moz-box-align-items: stretch;
+	-webkit-align-items:stretch;
+	align-items:stretch;
+	
+	-moz-box-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap:wrap;
+	
+	width:100%;
+	
+}
+.flex-table .tr{
+	-moz-box-flex-grow:1;
+	-webkit-flex-grow:1;
+	flex-grow:1;
+	border-top:1px solid #e4e7ec;
+	border-right:1px solid #e4e7ec;
+	margin-top: -1px;
+}
+
+
+.flex-table .th{	
+	border-bottom:1px solid #e4e7ec;
+}
+.flex-table .th,
+.flex-table .td{
+	padding:10px;
+}
+
+/* ****************************************************
+  テーブルスマホ対応【.t_sp】
+***************************************************** */
+
+
+@media screen and (max-width: 479px) {
+
+	/*テーブルスタイル*/
+	.table.t_sp table::before, .table.t_sp table::after {
+		content: "";
+		display: table;
+	}
+	.table.t_sp table::after {
+		clear: both;
+	}
+	.table.t_sp colgroup, .table.t_sp col {
+		display: none;
+		width: auto;
+	}
+	.table.t_sp tbody, .table.t_sp tr, .table.t_sp th, .table.t_sp td {
+		box-sizing: border-box;
+		clear: both;
+		display: block;
+		float: left;
+		width: 100%;
+	}
+	
+	.table.t_sp th, .table.t_sp td {
+		margin-top: -1px;
+	}
+	
+	/*テーブルスタイル2*/
+	.table2.t_sp th{
+		display:none;
+	}
+	.table2.t_sp td{
+		display: block;
+		width: 100%;
+		padding:0;
+		margin-top:-1px;
+	}
+	.table2.t_sp .th{
+		font-weight:bold;
+		border-bottom: 1px solid #e4e7ec;
+	}
+	.table2.t_sp td p{
+		padding:10px;
+	}
+	
+	/*フレックステーブル*/
+	.flex-table.t_sp .table-box{
+		
+	}
+
+}
+
+/* ****************************************************
+  ボーダー無し【t_no-border】
+***************************************************** */
+
+/*テーブル*/
+.t_no-border th,
+.t_no-border td{
+	border:none;
+	padding-left:0;
+	padding-right:0;
+	background-color:transparent;
+}
+
+/*フレックステーブル*/
+.t_no-border.flex-table,
+.t_no-border .tr,
+.t_no-border .th,
+.t_no-border .td{
+	border:none;
+	padding-left:0;
+	padding-right:0;
+	background-color:transparent;
+}
+
+/*ボーダー解除*/
+.no-border{ border:none !important; }
+/*上下*/
+.no-tb-border{ border-top:none!important; border-bottom:none!important;}
+/*左右*/
+.no-lr-border{ border-left:none!important; border-right:none!important;}
+/*上*/
+.no-t-border{ border-top:none!important; }
+/*下*/
+.no-b-border{ border-bottom:none!important;}
+/*左*/
+.no-l-border{ border-left:none!important;}
+/*右*/
+.no-r-border{ border-right:none!important;}
+
+/* ****************************************************
+  セルのサイズ【t_size】
+***************************************************** */
+
+.t_size-s{ width: 200px; }
+.t_size-m{ width: 300px; }
+.t_size-l{ width: 400px; }
+
+@media screen and (max-width : 800px){
+	.t_size-s{ width: 120px; }
+	.t_size-m{ width: 200px; }
+	.t_size-l{ width: 320px; }
+}
+
+@media screen and (max-width : 479px){
+	.t_size-s{ width: 90px; }
+	.t_size-m{ width: 150px; }
+	.t_size-l{ width: 250px; }
+}
+
+
+/* ****************************************************
+  セルの色【t_color】
+***************************************************** */
+
+.t_color-gray { background: #fbfbfd none repeat scroll 0 0; }
+.t_color-gray2 { background: #f5f5f7 none repeat scroll 0 0; }
+
+
+/*
+#####################################################################
+
+	トランジョン
+	
+#####################################################################
+*/
+
+/* ****************************************************
+  一括指定【easeOutExpo】
+***************************************************** */
+
+.thumbnail .thum-box a,
+.masonry .thum-box,
+.masonry .thum-box a,
+.t_hidden-full .t_caption,
+.t_hidden-half .t_caption,
+.t_visible-full .v_caption,
+.t_visible-full .v_caption{
+	-webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+	transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+	
+	/*アニメ高速化指定*/
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}

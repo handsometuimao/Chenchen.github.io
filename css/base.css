@@ -1,0 +1,236 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*
+#####################################################################
+
+	目次【INDEX】
+	
+#####################################################################
+
+■ボディ【body】
+
+■リンク【a】
+
+■ラッパー【wrapper】
+
+■コンテンツ【contents】
+
+■ヘッダー【header】
+
+　＿ロゴ【.logo】
+
+　＿ボックス【header_box】
+
+■フッター【footer】
+
+　＿ロゴ【.logo】
+
+　＿ボックス【footer_box】
+
+
+
+*/
+
+
+/*
+#####################################################################
+
+	ボディ【body】
+	
+#####################################################################
+*/
+
+html{
+
+	font-family: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+
+
+	font-weight: normal;
+	word-break: normal;
+	
+	/*アンチエイリアスのかかり具合を指定するプロパティ*/
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	/*スマホで勝手に文字が大きくなる対策*/
+	-webkit-text-size-adjust: 100%;
+}
+
+
+/*テキスト選択時のハイライトのカラー*/
+*::selection { background: #dddddd; }
+*::-moz-selection { background: #dddddd;}
+
+body{ overflow-y:scroll; overflow-x:hidden;}
+
+@media screen and (max-width : 479px){
+	html {
+		font-size:12px;
+	}
+}
+
+/*
+#####################################################################
+
+	リンク【a】
+	
+#####################################################################
+*/
+
+a{ 
+	color: #1a1a1a;
+	text-decoration:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);/*スマホ時ハイライトカラーを「無効」*/
+}
+
+a:hover{
+	color: #1a1a1a;
+	text-decoration:none;
+}
+
+/*
+#####################################################################
+
+	ラッパー【wrapper】
+	
+#####################################################################
+*/
+
+.wrapper{
+    /*margin: 0 auto;
+    max-width: 980px;
+	padding:0 10px;*/
+	position:relative;
+}
+
+@media screen and (max-width : 767px){
+	.future-module.wrapper,
+	.works-module.wrapper,
+	.worksDetail-module.wrapper,
+	.service-module.wrapper,
+	.about-module.wrapper,
+	.about-module-04,
+	.contact-module.wrapper,
+	.award-module.wrapper,
+	.footer-module.wrapper,
+	.detail-module-03.wrapper{ width:100%!important; min-width:100%!important;
+		 padding-left:3% !important; padding-right:3% !important; margin-left:0 !important; margin-right:0 !important;
+	}
+}
+
+@media screen and (max-width : 479px){
+	.wrapper,
+	.future-module.wrapper,
+	.works-module.wrapper,
+	.worksDetail-module.wrapper,
+	.service-module.wrapper,
+	.about-module.wrapper,
+	.contact-module.wrapper,
+	.award-module.wrapper,
+	.footer-module.wrapper,
+	.detail-module-03.wrapper 
+	{ width:100%!important; min-width:100%!important;
+		 padding-left:15px !important; padding-right:15px !important; margin-left:0 !important; margin-right:0 !important;
+	}
+}
+
+/*
+#####################################################################
+
+	コンテンツ【contents】
+	
+#####################################################################
+*/
+
+#contents{
+	/*min-width: 980px;*/
+	overflow:hidden;
+}
+
+@media screen and (max-width : 767px){
+	#contents{ width:100% !important; min-width:100% !important;
+	/*padding-left:15px; padding-right:15px;*/
+	}
+}
+
+/*
+#####################################################################
+
+	ヘッダー【header】
+	
+#####################################################################
+*/
+
+header .logo,
+header .logo img{ 
+	width:133px;
+	height:28px;
+}
+
+
+/* ****************************************************
+  ロゴ【.logo】
+***************************************************** */
+
+header .logo{}
+
+/* ****************************************************
+  ボックス【header_box】
+***************************************************** */
+
+/*header_box01*/
+.header_box01{}
+.header_box02{}
+.header_box03{}
+
+/*
+#####################################################################
+
+	フッター【footer】
+	
+#####################################################################
+*/
+
+footer {}
+
+@media screen and (max-width : 479px){
+	footer{ width:100%!important; min-width:100%!important;}
+}
+
+/* ****************************************************
+  ロゴ【.logo】
+***************************************************** */
+
+footer .logo{}
+
+/* ****************************************************
+  ボックス【footer_box】
+***************************************************** */
+.footer_box01{}
+.footer_box02{}
+.footer_box03{}
+
+
+/* ****************************************************
+ オプション
+***************************************************** */
+
+/* 上下左右常に固定 */
+.head-top-fixed,.head-bottom-fixed{ position:fixed; left:0; width:100%; z-index:10;}
+.head-top-fixed{ top:0; }
+.head-bottom-fixed{ bottom:0;}
+
+.head-left-fixed,.head-right-fixed{ position:fixed; top:0; height:100%; z-index:10;}
+.head-left-fixed{ left:0; }
+.head-right-fixed{ right:0;}
+
+/* 上下左右範囲内で固定 */
+.head-top-absolute,.head-bottom-absolute{ position: absolute; left:0; width:100%; z-index:10;}
+.head-top-absolute{ top:0; }
+.head-bottom-absolute{ bottom:0;}
+
+.head-left-absolute,.head-right-absolute{ position:absolute; top:0; height:100%; z-index:10;}
+.head-left-absolute{ left:0; }
+.head-right-absolute{ right:0;}

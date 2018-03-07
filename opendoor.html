@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; chaRset=utf-8" />
+<meta name="author" content="朱晨晨" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<title>二维码开门</title>
+<style type="text/css">
+	.bg{
+		background:#f3f3f3;
+		padding:10px;
+	}
+	.fangkuang{
+		width:751px;
+		height:1335px;
+		position:relative;
+		background:url(imgs/bg.png) no-repeat center;
+		box-shadow:0 0 6px rgba(0,0,0,0.4);
+		overflow:hidden;
+	}
+	.twocode{
+		width:511px;
+		height:511px;
+		position:absolute;
+		background:url(imgs/twocode.png) no-repeat center;
+		left:120px;
+		top:180px;
+		animation: twocode 1.2s ease infinite;
+	}
+	.button{
+		width:121px;
+		height:121px;
+		position:absolute;
+		background:url(imgs/button.png) no-repeat center;
+		left:315px;
+		bottom:547px;
+	}
+	.clicked{
+		width:121px;
+		height:121px;
+		position:absolute;
+		background:url(imgs/clicked.png) no-repeat center;
+		right:315px;
+		bottom:547px;
+		animation: clicked 1.2s ease infinite;
+	}
+	.hand{
+		width:261px;
+		height:261px;
+		position:absolute;
+		background:url(imgs/hand.png) no-repeat center;
+		bottom:356px;
+		animation: hand 1.2s ease infinite;
+	}
+
+
+	@keyframes hand{
+		0%{right:-261px;}
+		50%{right:222px;}
+		80%{right: 222px;}
+		100%{right: 222px;}
+	}
+	@keyframes twocode{
+		0%{top:400px;opacity: 0;transform:scale(0.2);}
+		50%{top:400px;opacity: 0;transform:scale(0.2);}
+		80%{top:180px;opacity: 1;transform:scale(1);;}
+		100%{top:180px;opacity: 1;transform:scale(1);;}
+	}
+	@keyframes clicked{
+		0%{opacity: 0;transform:scale(0.9);}
+		50%{opacity: 0;transform:scale(0.9);}
+		55%{opacity: 1;transform:scale(0.9);}
+		80%{opacity: 1;transform:scale(1);;}
+		100%{opacity: 1;transform:scale(1);;}
+	}
+</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="fangkuang">
+			<div class="twocode"></div>
+			<div class="button"></div>
+			<div class="clicked"></div>
+			<div class="hand"></div>
+		</div>
+	</div>
+</body>
+</html>
