@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+#####################################################################
+
+	目次【INDEX】
+	
+#####################################################################
+
+■リセット
+
+■初期設定
+
+
+/*
+#####################################################################
+
+	リセット
+	
+#####################################################################
+*/
+
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-ms-box-sizing: border-box;box-sizing: border-box;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%; font-weight: normal;margin:0; padding:0; vertical-align: baseline; outline:0; line-height:0.7em;}
+ol, ul,ol li,ul li{list-style: none;}
+body, div,dl, dt, dd, ul, ol, li,h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, input, textarea,p, blockquote, th, td, figure{margin: 0;padding: 0; border:none;}
+
+tablel{border-collapse: collapse; border-spacing: 0;}
+
+img{ vertical-align:bottom;}
+
+
+/*
+#####################################################################
+
+	初期設定（必要最低限　※指定しすぎない）
+	
+#####################################################################
+*/
+
+body,
+html{
+	color: #6f7072;
+    font-size:13px;
+	letter-spacing:0.03rem;
+}
